@@ -49,11 +49,11 @@ while True:
     query = input("Prompt: ")
   if query in ['quit', 'exit']:
     sys.exit()
+  llm_result = llm.invoke({"question": query, "chat_history": chat_history})
+  print(llm_result['answer'])
 
   print("llm_result.usage_metadata")
   print(llm_result.usage_metadata)
-  llm_result = llm.invoke({"question": query, "chat_history": chat_history})
-  print(llm_result['answer'])
 
   chat_history.append((query, llm_result['answer']))
   query = None
